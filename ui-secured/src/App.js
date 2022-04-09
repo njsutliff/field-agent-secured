@@ -51,9 +51,6 @@ function App() {
     logout,
   };
   
-  
-  
-  
   /*
    <Route path = "/agents/add" element = {<Home/>} />
   <Route path = "/agents/edit/:id" element = {<Home/>} />
@@ -61,9 +58,13 @@ function App() {
   <Route path = "/login" element = {<Agents/>} />
 */
   return (
+    <AuthContext.Provider value={auth}>
 <Router>
+<Header />
+
 <Routes>
-  <Route path = "/" element = {<Home/>} />
+  <Route exact path = "/" element = {<Home/>} />
+  
   <Route path = "/login" element = {<Login/>}/>
   <Route path = "/agents" element = {<Agents/>} />
   <Route path = "/*" element = {<NotFound/>} />
@@ -71,6 +72,7 @@ function App() {
 </Routes>
 
 </Router>
+</AuthContext.Provider>
   );
 }
 
