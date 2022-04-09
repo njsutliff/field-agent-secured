@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# field-agent-secured
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* [ ] Features (each feature complete, works without errors)
+  * [ ] Home
+  * [ ] Login
+  * [ ] Agents
+  * [ ] Add Agent
+  * [ ] Edit Agent
+  * [ ] Delete Agent
+  * [ ] Not Found (displays for all unknown routes)
+* [ ] Security
+  * [ ] AuthController (API endpoint added to the backend for authenticating users)
+  * [ ] Login State (the current logged in user's username displays somewhere on the page along with a "Logout" button)
+  * [ ] Logout (app provides a way for the current user to logout)
+  * [ ] Protected Routes (Agents, Add Agent, Edit Agent, and Delete Agent [if implemented] require a logged in user)
+* [ ] React Router
+  * [ ] Client-Side Routes (all required routes implemented)
+  * [ ] `useHistory` Hook (used to programmatically redirect users)
+  * [ ] `useParams` Hook (used to access parameters, paths, and other data)
+* [ ] React Context (used to share global state and helper functions to components throughout the app)
+* [ ] Fetch API (used for all async HTTP requests to the backend data service)
+* [ ] JavaScript (valid, well-organized, clean and consistent formatting)
+* [ ] JSX (valid, well-organized, clean and consistent formatting)
+* [ ] HTML/CSS (used a CSS framework)
 
-## Available Scripts
+## Test Plan
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [ ] Home
+  * [ ] Displays when browsing to `/`
+  * [ ] Available to all users (anonymous and authenticated)
+* [ ] Login
+  * [ ] Displays when browsing to `/login`
+  * [ ] Includes "Username" and "Password" fields
+  * [ ] Login fails for bad username/password combination
+  * [ ] Generic "login failed" message displayed in the UI on failed login attempt
+  * [ ] Login succeeds for good username/password combination
+  * [ ] User is redirected to the "Home" page after a successful login
+* [ ] Security
+  * [ ] Username and "Logout" button is displayed on every page after a successful login
+  * [ ] Clicking the "Logout" button logs out the current user
+  * [ ] User is redirected to the "Login" page when attempting to browse to any of the agent related routes without being logged in
+* [ ] Agents
+  * [ ] Displays when browsing to `/agents`
+  * [ ] Displays a list of the agents with basic information from the backend service
+  * [ ] Includes a button/link to browse to the "Add Agent" page
+  * [ ] For each agent, includes buttons/links to browse to the "Edit Agent" and "Delete Agent" pages for the associated agent
+* [ ] Add Agent
+  * [ ] Displays when browsing to `/agents/add`
+  * [ ] Displays a form for the user to enter an agent's information
+  * [ ] Includes a button to submit the form
+  * [ ] Includes a button/link to cancel the add operation and return to the "Agents" page
+  * [ ] API validation errors are displayed in the UI when submitting bad data
+  * [ ] An agent's information can be entered into the form and when the form is submitted, the agent is added to the backend service
+  * [ ] The user is redirect to the "Agents" page after successfully creating an agent
+* [ ] Edit Agent
+  * [ ] Displays when browsing to `/agents/edit/1` (replace `1` with a valid agent ID)
+  * [ ] Displays a form for the user to edit an agent's information
+  * [ ] Includes a button to submit the form
+  * [ ] Includes a link to cancel the edit operation and return to the "Agents" page
+  * [ ] The form pre-populates with the agent's current information
+  * [ ] API validation errors are displayed in the UI when submitting bad data
+  * [ ] The agent's information can be changed in the form and when the form is submitted, the agent is updated in the backend service
+  * [ ] The user is redirect to the "Agents" page after successfully updating an agent
+* [ ] Delete Agent
+  * [ ] Displays when browsing to `/agents/delete/1` (replace `1` with a valid agent ID)
+  * [ ] Displays an agent's basic information
+  * [ ] Displays a delete confirmation message
+  * [ ] Includes a button to complete the delete operation
+  * [ ] Includes a link to cancel the delete operation and return to the "Agents" page
+  * [ ] Proceeding with the delete operation removes the agent from the backend service
+  * [ ] The user is redirect to the "Agents" page after successfully deleting an agent
+* [ ] Not Found
+  * [ ] Attempting to browse to an unknown route displays the "Not Found" page
+ 
