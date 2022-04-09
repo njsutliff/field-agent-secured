@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {AddAgentsForm} from "./AddAgentsForm";
 import{EditAgentsForm} from "./EditAgentsForm";
 import {AgentsTable} from "./AgentsTable";
-import {Errors} from "./Errors.js";
+import {Errors} from "./Errors";
 
 function Agents() {
   const [agents, setAgents] = useState([]);
