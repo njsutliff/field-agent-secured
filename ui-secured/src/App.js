@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Agents from './components/Agents';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
+import Header from './components/Header';
 import React, {useState} from 'react';
 
 const TOKEN_KEY = "user-api-token";
