@@ -8,10 +8,10 @@
   * [ ] Edit Agent
   * [ ] Delete Agent
   * [ ] Not Found (displays for all unknown routes)
-* [ ] Security
-  * [ ] AuthController (API endpoint added to the backend for authenticating users)
-  * [ ] Login State (the current logged in user's username displays somewhere on the page along with a "Logout" button)
-  * [ ] Logout (app provides a way for the current user to logout)
+* [x] Security
+  * [x] AuthController (API endpoint added to the backend for authenticating users)
+  * [x] Login State (the current logged in user's username displays somewhere on the page along with a "Logout" button)
+  * [x] Logout (app provides a way for the current user to logout)
   * [ ] Protected Routes (Agents, Add Agent, Edit Agent, and Delete Agent [if implemented] require a logged in user)
 * [ ] React Router
   * [ ] Client-Side Routes (all required routes implemented)

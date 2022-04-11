@@ -1,18 +1,23 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
+
 import jwt_decode from 'jwt-decode';
 import AuthContext from "./AuthContext";
-
 import Home from './components/Home';
 import Agents from './components/Agents';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
-import React, {useState} from 'react';
+import Register from './components/Register';
+import AddAgent from './components/AddAgent';
+import EditAgent from './components/AddAgent';
+import DeleteAgent from './components/AddAgent';
 
+import React, { useState } from 'react';
 const TOKEN_KEY = "user-api-token";
 
-function App() { 
+function App() {
   const [user, setUser] = useState(null);
   const login = (token) => {
     console.log(token);
@@ -40,40 +45,46 @@ function App() {
 
     return user;
   };
-
   const logout = () => {
     localStorage.removeItem(TOKEN_KEY);
     setUser(null);
   };
-
   const auth = {
     user: user ? { ...user } : null,
     login,
     logout,
   };
-  
-  /*
-   <Route path = "/agents/add" element = {<Home/>} />
-  <Route path = "/agents/edit/:id" element = {<Home/>} />
-  <Route path = "/agents/delete/:id" element = {<Home/>} />
-  <Route path = "/login" element = {<Agents/>} />
-*/
+
   return (
     <AuthContext.Provider value={auth}>
-<Router>
-<Header />
-
-<Routes>
-  <Route exact path = "/" element = {<Home/>} />
-  
-  <Route path = "/login" element = {<Login/>}/>
-  <Route path = "/agents" element = {<Agents/>} />
-  <Route path = "/*" element = {<NotFound/>} />
-
-</Routes>
-
-</Router>
-</AuthContext.Provider>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home /> </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/agents">
+            {auth.user ? <Agents /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/agents/add">
+            {auth.user ? <AddAgent /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/agents/edit/:id">
+            {auth.user ? <EditAgent /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/agents/delete/:id">
+            {auth.user ? <Agents /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/*"> <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

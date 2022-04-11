@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Errors from "./Errors";
 import AuthContext from "../AuthContext";
@@ -15,7 +15,7 @@ const Login = () => {
 
   const auth = useContext(AuthContext);
 
-  let navigate = useNavigate();
+  const history = useHistory();
 
   const handleInputChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
@@ -44,7 +44,7 @@ const Login = () => {
     .then(data => {
       if (data) {
         auth.login(data.jwt_token);
-        navigate("/");
+        history.push("/");
       } else {
         setErrors(['Login failure']);
       }

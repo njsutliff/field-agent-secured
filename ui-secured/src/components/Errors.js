@@ -5,7 +5,7 @@ export default function Errors({ errors }) {
   
     return (
       <div className="alert alert-danger">
-        The following errors were found:
+        Error:
         <ul>
           {errors?.map(error => (
             <li key={error}>{error}</li>

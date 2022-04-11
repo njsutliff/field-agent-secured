@@ -6,6 +6,7 @@ const NavBar = () => {
   const auth = useContext(AuthContext);
   return (
       <>
+     
     <ul>
       <li>
         <Link to="/">Home</Link>
@@ -17,7 +18,7 @@ const NavBar = () => {
         <Link to="/contact">Contact</Link>
       </li>
       <li>
-        <Link to="/todos">Todos</Link>
+        <Link to="/Agents">Agents</Link>
       </li>
       {!auth.user && (
         <>

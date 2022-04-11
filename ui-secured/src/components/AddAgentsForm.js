@@ -5,8 +5,6 @@ export const AddAgentsForm = (props) => {
     const [agent, setAgent] = useState(DEFAULT_AGENT);
    
     const handleInputChange = event => {
-        //const {name, value} = event.target;
-                //setAgent({...agent, [name]: value});
                 const nextAgent = {...agent};
                 let value = event.target.value;
                 if(event.target.type=="number"){
