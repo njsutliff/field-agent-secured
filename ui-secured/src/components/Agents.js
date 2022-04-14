@@ -1,42 +1,26 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
-import {AddAgentsForm} from "./AddAgentsForm";
 import{EditAgentsForm} from "./EditAgentsForm";
 import {AgentsTable} from "./AgentsTable";
-import Errors from "./Errors";
 import AddAgent from "./AddAgent";
 
 function Agents() {
   const [agents, setAgents] = useState([]);
 
   const [editAgentId, setEditAgentId] = useState(0);
-  const [errors, setErrors] = useState([]);
   const [agentEdit, setAgentEdit] = useState([]);
-useEffect(() => {
-  const getData = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/agent");
-      const data = await response.json();
-      setAgents(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  getData();
-}, []);
-const handleAddSubmit = async (agent) => {
- 
-  const body = JSON.stringify(agent);
   
-    const response = await fetch("http://localhost:8080/api/agent/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    });
-    window.location.reload();
-  }
+  const getData = async () => {
+    fetch("http://localhost:8080/api/agent")
+      .then((response) => response.json())
+      .then((data) => setAgents(data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 const handleEdit = (agent) => {
   console.log("agent: ");
   console.log(agent);
@@ -75,7 +59,7 @@ const handleUpdateSubmit = async (agentEdit) => {
 
 setAgents([...newAgents]);
       setEditAgentId(0);
-      setErrors([]);
+      //setErrors([]);
     } else if (response.status === 400) {
       const data = await response.json();
     } else {
@@ -109,7 +93,7 @@ const handleDelete = async (agentId) => {
 const handleUpdateCancel = () => {
 window.location.reload();
   setEditAgentId(0);
-setErrors([]);
+//setErrors([]);
 };
  return ( 
   <div>
@@ -170,34 +154,7 @@ setErrors([]);
     </tbody>
   </table>
   </div>
-);/*
-  <>
- <h2 className="my-4">Add Agent</h2>
- <Link to="/agents/add" className="btn btn-primary mb-4">
-        <i className="bi bi-plus-circle-fill"></i> Add
-        <AddAgentsForm
-        handleAddSubmit={handleAddSubmit}
-        errors={errors}
-        handleUpdateCancel={handleUpdateCancel}
-      />
-      </Link>
-
-    <Errors errors={errors} />
-    <h5>Active Agents</h5>
-    <AgentsTable
-      agents={agents}
-      handleDelete={handleDelete}
-      handleEdit = {handleEdit}
-    /> 
- 
-  
-        <><h5>Edit an Agent </h5><EditAgentsForm
-           handleUpdateSubmit={handleUpdateSubmit}
-           agentEdit={agentEdit}
-           handleUpdateCancel={handleUpdateCancel} /></>
-       
-     </>
-);*/
+);
 }
 
 export default Agents;

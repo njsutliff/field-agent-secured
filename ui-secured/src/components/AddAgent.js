@@ -53,11 +53,11 @@ const AddAgent = () => {
             history.push('/agents');
            // setErrors([]);
 
-        } //else {
-            //setErrors(data);        
-        //}
+        } else {
+            setErrors(data);        
+        }
     })
-    //.catch(error => console.log(error));
+    .catch(error => console.log(error));
   }
 return(
   <>
