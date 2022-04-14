@@ -69,7 +69,7 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/agents">
+          <Route exact path="/agents">
             {auth.user ? <Agents /> : <Redirect to="/login" />}
           </Route>
           <Route path="/agents/add">

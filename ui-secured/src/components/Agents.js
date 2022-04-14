@@ -113,7 +113,7 @@ setErrors([]);
 };
  return ( 
   <div>
-  <h2 className="my-4">ToDos</h2>
+  <h2 className="my-4">crud menu</h2>
   <Link to="/agents/add" className="btn btn-primary mb-4">
     <i className="bi bi-plus-circle-fill"></i> add agent
   </Link>
