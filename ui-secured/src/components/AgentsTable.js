@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 export const AgentsTable = (props) => (
     <table className="table">
     <thead>
@@ -52,4 +52,4 @@ export const AgentsTable = (props) => (
       )}
     </tbody>
   </table>
-);
+);*/

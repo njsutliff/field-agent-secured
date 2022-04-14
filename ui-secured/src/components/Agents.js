@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import {AddAgentsForm} from "./AddAgentsForm";
 import{EditAgentsForm} from "./EditAgentsForm";
 import {AgentsTable} from "./AgentsTable";
 import Errors from "./Errors";
+import AddAgent from "./AddAgent";
 
 function Agents() {
   const [agents, setAgents] = useState([]);
@@ -22,7 +24,6 @@ useEffect(() => {
   };
   getData();
 }, []);
-
 const handleAddSubmit = async (agent) => {
  
   const body = JSON.stringify(agent);
@@ -111,7 +112,76 @@ window.location.reload();
 setErrors([]);
 };
  return ( 
+  <div>
+  <h2 className="my-4">ToDos</h2>
+  <Link to="/agents/add" className="btn btn-primary mb-4">
+    <i className="bi bi-plus-circle-fill"></i> add agent
+  </Link>
+  <table className="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Height (inches)</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {agents.length > 0 ? (
+        agents.map((agent) => (
+          <tr key={agent.id}>
+            <td>{agent.agentId}</td>
+            <td>{agent.firstName}</td>
+            <td>{agent.middleName}</td>
+            <td>{agent.lastName}</td>
+            <td>{agent.dob}</td>
+            <td>{agent.heightInInches}</td>
+
+            <td>
+              <div>
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => handleEdit(agent)}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => {if (window.confirm(
+                    `Are you sure you wish to delete agent 
+                    ${agent.firstName + ' ' + agent.middleName +' ' + agent.lastName}
+                    date of birth: ${agent.dob}
+                    height: ${agent.heightInInches}?`))  handleDelete(agent.agentId)}}
+                  className="btn btn-danger btn-sm ml-2"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan={3}>No Agents</td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+  </div>
+);/*
   <>
+ <h2 className="my-4">Add Agent</h2>
+ <Link to="/agents/add" className="btn btn-primary mb-4">
+        <i className="bi bi-plus-circle-fill"></i> Add
+        <AddAgentsForm
+        handleAddSubmit={handleAddSubmit}
+        errors={errors}
+        handleUpdateCancel={handleUpdateCancel}
+      />
+      </Link>
+
     <Errors errors={errors} />
     <h5>Active Agents</h5>
     <AgentsTable
@@ -119,20 +189,15 @@ setErrors([]);
       handleDelete={handleDelete}
       handleEdit = {handleEdit}
     /> 
-     {editAgentId === 0 ? (
-    <AddAgentsForm
-        handleAddSubmit={handleAddSubmit}
-        errors={errors}
-        handleUpdateCancel={handleUpdateCancel}
-      />
-      ) : (
+ 
+  
         <><h5>Edit an Agent </h5><EditAgentsForm
            handleUpdateSubmit={handleUpdateSubmit}
            agentEdit={agentEdit}
            handleUpdateCancel={handleUpdateCancel} /></>
-          )}
+       
      </>
-);
+);*/
 }
 
 export default Agents;
