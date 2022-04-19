@@ -56,7 +56,9 @@ function App() {
   };
 
   return (
+    
     <AuthContext.Provider value={auth}>
+      
       <Router>
         <Header />
         <Switch>

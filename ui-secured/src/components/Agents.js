@@ -57,7 +57,7 @@ const handleUpdateSubmit = async (agentEdit) => {
         (agent) => agent.id === editAgentId
       );
 
-setAgents([...newAgents]);
+    setAgents([...newAgents]);
       setEditAgentId(0);
       //setErrors([]);
     } else if (response.status === 400) {
