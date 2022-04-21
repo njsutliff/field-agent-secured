@@ -126,12 +126,15 @@ window.location.reload();
 
             <td>
               <div>
-                <button
-                  className="btn btn-primary btn-sm"
-                  onClick={() => handleEdit(agent)}
-                >
-                  Edit
-                </button>
+              <Link
+                    to={`/agents/edit/${agent.agentId}`}
+                    className="btn btn-primary btn-sm">
+                    <i className="bi bi-plus-circle-fill"></i> edit agent
+                  </Link>
+                
+
+                           
+
                 <button
                   onClick={() => {if (window.confirm(
                     `Are you sure you wish to delete agent 
